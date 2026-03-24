@@ -47,7 +47,7 @@ export function EntrepreneurProfile() {
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
-          {[1, 2, 3, 4, 5, 6].map((step) => (
+          {[1, 2, 3, 4, 5].map((step) => (
             <div
               key={step}
               className="h-1.5 flex-1 rounded-full"
@@ -59,7 +59,7 @@ export function EntrepreneurProfile() {
           <button onClick={() => navigate(-1)} className="text-[#6B5B52]">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <p className="text-[12px] text-[#6B5B52]">Step 1 of 6</p>
+          <p className="text-[12px] text-[#6B5B52]">Step 1 of 5</p>
         </div>
       </div>
 
@@ -182,16 +182,19 @@ export function EntrepreneurProfile() {
           </div>
         </div>
 
-        {/* Location */}
+        {/* Location — Swiss cities */}
         <div>
           <label className="block text-[15px] text-[#3D2314] mb-3 font-medium">Location</label>
-          <input
-            type="text"
+          <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            placeholder="e.g. Paris, France"
             className="w-full px-4 py-3 rounded-2xl bg-white border-2 border-[rgba(61,35,20,0.15)] focus:outline-none text-[14px] text-[#3D2314]"
-          />
+          >
+            <option value="">Select your city</option>
+            {['Genève', 'Lausanne', 'Zurich', 'Bâle', 'Berne', 'Fribourg', 'Neuchâtel', 'Lucerne', 'Lugano', 'Winterthur', 'St. Gallen', 'Sion', 'Montreux'].map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
         </div>
 
         {/* Languages */}

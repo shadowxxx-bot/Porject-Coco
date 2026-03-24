@@ -23,12 +23,15 @@ import { FounderDnaResults } from "./components/assessment/FounderDnaResults";
 import { DiscoveryFeed } from "./components/discover/DiscoveryFeed";
 import { ExpandedProfile } from "./components/discover/ExpandedProfile";
 import { MatchScreen } from "./components/discover/MatchScreen";
+import { MatchesList } from "./components/discover/MatchesList";
 
 // Messaging
 import { MessagesScreen } from "./components/messaging/MessagesScreen";
+import { ConversationView } from "./components/messaging/ConversationView";
 
 // Profile
 import { MyProfile } from "./components/profile/MyProfile";
+import { EditProfile } from "./components/profile/EditProfile";
 
 // Events
 import { EventsList } from "./components/events/EventsList";
@@ -57,8 +60,11 @@ export const router = createBrowserRouter([
   { path: "/discover", Component: DiscoveryFeed },
   { path: "/profile/:profileId", Component: ExpandedProfile },
   { path: "/match/:profileId", Component: MatchScreen },
+  { path: "/matches", Component: MatchesList },
   { path: "/messages", Component: MessagesScreen },
+  { path: "/conversation/:conversationId", Component: ConversationView },
   { path: "/my-profile", Component: MyProfile },
+  { path: "/edit-profile", Component: EditProfile },
   { path: "/events", Component: EventsList },
   { path: "/events/create", Component: EventCreate },
   { path: "/events/:id", Component: EventDetail },

@@ -2,24 +2,17 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTheme } from '../../context/ThemeContext';
 
-const roles = ['Technical', 'Business', 'Design', 'Marketing', 'Operations'];
+const roleOptions = ['Technical', 'Business', 'Product', 'Design', 'Marketing', 'Operations', 'Sales', 'Finance'];
+const projectTypes = ['Early-stage startup', 'Growth-stage', 'Deep tech', 'Social impact', 'Marketplace', 'SaaS', 'Hardware', 'Any exciting project'];
 
 export function TellUsAboutYou() {
   const navigate = useNavigate();
   const { colors } = useTheme();
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
-  const [lookingFor, setLookingFor] = useState<string[]>([]);
+  const [projectPrefs, setProjectPrefs] = useState<string[]>([]);
 
-  const toggleRole = (role: string) => {
-    setSelectedRoles((prev) =>
-      prev.includes(role) ? prev.filter((r) => r !== role) : [...prev, role]
-    );
-  };
-
-  const toggleLookingFor = (role: string) => {
-    setLookingFor((prev) =>
-      prev.includes(role) ? prev.filter((r) => r !== role) : [...prev, role]
-    );
+  const toggleItem = (arr: string[], setArr: (v: string[]) => void, item: string) => {
+    setArr(arr.includes(item) ? arr.filter((r) => r !== item) : [...arr, item]);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -44,20 +37,22 @@ export function TellUsAboutYou() {
         <h1 className="text-[42px] leading-[0.95] tracking-[-0.04em] text-[#3D2314] mb-2">
           Tell us about you
         </h1>
+        <p className="text-[14px] text-[#6B5B52]">What role can you bring to a startup?</p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
         <div className="flex-1 space-y-8">
           <div>
             <label className="block text-[16px] text-[#3D2314] mb-4 font-medium">
-              Your role
+              Your expertise
             </label>
+            <p className="text-[13px] text-[#6B5B52] mb-3">Select the roles you can fill in a startup</p>
             <div className="flex flex-wrap gap-2.5">
-              {roles.map((role) => (
+              {roleOptions.map((role) => (
                 <button
                   key={role}
                   type="button"
-                  onClick={() => toggleRole(role)}
+                  onClick={() => toggleItem(selectedRoles, setSelectedRoles, role)}
                   className="px-5 py-3 rounded-full border-2 transition-all"
                   style={{
                     backgroundColor: selectedRoles.includes(role) ? colors.primary : 'white',
@@ -73,22 +68,23 @@ export function TellUsAboutYou() {
 
           <div>
             <label className="block text-[16px] text-[#3D2314] mb-4 font-medium">
-              What are you looking for in a co-founder?
+              What type of project interests you?
             </label>
+            <p className="text-[13px] text-[#6B5B52] mb-3">Select all that apply</p>
             <div className="flex flex-wrap gap-2.5">
-              {roles.map((role) => (
+              {projectTypes.map((type) => (
                 <button
-                  key={role}
+                  key={type}
                   type="button"
-                  onClick={() => toggleLookingFor(role)}
+                  onClick={() => toggleItem(projectPrefs, setProjectPrefs, type)}
                   className="px-5 py-3 rounded-full border-2 transition-all"
                   style={{
-                    backgroundColor: lookingFor.includes(role) ? colors.primary : 'white',
-                    borderColor: lookingFor.includes(role) ? colors.primary : 'rgba(61,35,20,0.15)',
-                    color: lookingFor.includes(role) ? 'white' : '#3D2314',
+                    backgroundColor: projectPrefs.includes(type) ? colors.primary : 'white',
+                    borderColor: projectPrefs.includes(type) ? colors.primary : 'rgba(61,35,20,0.15)',
+                    color: projectPrefs.includes(type) ? 'white' : '#3D2314',
                   }}
                 >
-                  {role}
+                  {type}
                 </button>
               ))}
             </div>
@@ -98,7 +94,7 @@ export function TellUsAboutYou() {
         <div className="mt-8">
           <button
             type="submit"
-            disabled={selectedRoles.length === 0 || lookingFor.length === 0}
+            disabled={selectedRoles.length === 0}
             className="w-full text-white py-4 rounded-full transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ backgroundColor: colors.primary }}
           >

@@ -43,7 +43,7 @@ export function EntrepreneurMotivation() {
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
-          {[1, 2, 3, 4, 5, 6].map((step) => (
+          {[1, 2, 3, 4, 5].map((step) => (
             <div
               key={step}
               className="h-1.5 flex-1 rounded-full"
@@ -55,7 +55,7 @@ export function EntrepreneurMotivation() {
           <button onClick={() => navigate(-1)} className="text-[#6B5B52]">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <p className="text-[12px] text-[#6B5B52]">Step 2 of 6</p>
+          <p className="text-[12px] text-[#6B5B52]">Step 2 of 5</p>
         </div>
       </div>
 

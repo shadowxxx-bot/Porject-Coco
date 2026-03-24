@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router';
 import { Camera, Upload, Lock, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
+const swissCities = [
+  'Genève', 'Lausanne', 'Zurich', 'Bâle', 'Berne', 'Fribourg',
+  'Neuchâtel', 'Lucerne', 'Lugano', 'Winterthur', 'St. Gallen',
+  'Sion', 'Montreux', 'Biel/Bienne', 'Yverdon-les-Bains',
+];
+
 export function BuildProfile() {
   const navigate = useNavigate();
   const { colors } = useTheme();
@@ -66,6 +72,7 @@ export function BuildProfile() {
         <h1 className="text-[42px] leading-[0.95] tracking-[-0.04em] text-[#3D2314] mb-2">
           Build your profile
         </h1>
+        <p className="text-[14px] text-[#6B5B52]">Help entrepreneurs find you</p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex-1 flex flex-col pb-4">
@@ -101,7 +108,7 @@ export function BuildProfile() {
               type="text"
               value={headline}
               onChange={(e) => setHeadline(e.target.value)}
-              placeholder="Ex-Google PM building in climate tech"
+              placeholder="e.g. Full-stack dev ready to join a mission-driven startup"
               className="w-full px-4 py-3.5 rounded-2xl bg-white border-2 border-[rgba(61,35,20,0.15)] focus:border-[#E8894A] focus:outline-none transition-colors text-[#3D2314] placeholder:text-[#6B5B52]"
               required
             />
@@ -110,12 +117,12 @@ export function BuildProfile() {
           {/* Bio */}
           <div>
             <label className="block text-[14px] text-[#3D2314] mb-2 font-medium">
-              Bio
+              About you
             </label>
             <textarea
               value={bio}
               onChange={(e) => setBio(e.target.value.slice(0, 200))}
-              placeholder="What drives you? What's your superpower?"
+              placeholder="What drives you? What value can you bring to a startup team?"
               className="w-full px-4 py-3.5 rounded-2xl bg-white border-2 border-[rgba(61,35,20,0.15)] focus:border-[#E8894A] focus:outline-none transition-colors text-[#3D2314] placeholder:text-[#6B5B52] resize-none h-24"
               maxLength={200}
               required
@@ -125,7 +132,7 @@ export function BuildProfile() {
             </p>
           </div>
 
-          {/* Location */}
+          {/* Location — Swiss cities only */}
           <div>
             <label className="block text-[14px] text-[#3D2314] mb-2 font-medium">
               Location
@@ -136,17 +143,10 @@ export function BuildProfile() {
               className="w-full px-4 py-3.5 rounded-2xl bg-white border-2 border-[rgba(61,35,20,0.15)] focus:border-[#E8894A] focus:outline-none transition-colors text-[#3D2314]"
               required
             >
-              <option value="">Select location</option>
-              <option value="San Francisco">San Francisco</option>
-              <option value="New York">New York</option>
-              <option value="Los Angeles">Los Angeles</option>
-              <option value="Austin">Austin</option>
-              <option value="Seattle">Seattle</option>
-              <option value="Boston">Boston</option>
-              <option value="London">London</option>
-              <option value="Berlin">Berlin</option>
-              <option value="Singapore">Singapore</option>
-              <option value="Remote">Remote</option>
+              <option value="">Select your city</option>
+              {swissCities.map((city) => (
+                <option key={city} value={city}>{city}</option>
+              ))}
             </select>
           </div>
 
@@ -190,7 +190,7 @@ export function BuildProfile() {
           {/* Skills Tags */}
           <div>
             <label className="block text-[14px] text-[#3D2314] mb-2 font-medium">
-              Skills
+              Key skills
             </label>
             <input
               type="text"
@@ -223,7 +223,7 @@ export function BuildProfile() {
           </div>
         </div>
 
-        {/* Locked Founder DNA card (shown when assessment is completed) */}
+        {/* Locked Founder DNA card */}
         {localStorage.getItem('assessmentCompleted') === 'true' && (
           <div className="mt-6 flex items-start gap-3 bg-[#FFF8F2] rounded-2xl p-4 border border-[rgba(61,35,20,0.08)]">
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center flex-shrink-0">

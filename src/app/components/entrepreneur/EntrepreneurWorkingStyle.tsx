@@ -52,8 +52,6 @@ export function EntrepreneurWorkingStyle() {
         });
 
         localStorage.setItem('entrepreneur_workingstyle', JSON.stringify(scores));
-        localStorage.setItem('assessmentCompleted', 'true');
-        localStorage.setItem('assessmentScores', JSON.stringify(scores));
         navigate('/onboarding/entrepreneur/preferences');
       }
     }, 300);

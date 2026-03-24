@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router';
-import { ChevronRight, User, Dna, Settings, HelpCircle } from 'lucide-react';
+import { ChevronRight, Dna, Settings, HelpCircle, Pencil } from 'lucide-react';
 import { BottomNav } from '../layout/BottomNav';
 import { useTheme } from '../../context/ThemeContext';
 
 const menuItems = [
-  { label: 'Edit Profile', icon: User, path: '/profile' },
+  { label: 'Edit Profile', icon: Pencil, path: '/edit-profile' },
   { label: 'Founder DNA Results', icon: Dna, path: '/founder-dna' },
   { label: 'Settings', icon: Settings, path: '' },
   { label: 'Help & Support', icon: HelpCircle, path: '' },

@@ -36,7 +36,12 @@ export function EntrepreneurProject() {
     localStorage.setItem('entrepreneur_project', JSON.stringify({
       projectIndustry, problemType, projectStage, customerType, ambitionLevel, cofounderPurpose, projectOneLiner,
     }));
-    navigate('/discover');
+    // Clear any previous assessment state so the guard doesn't skip the test
+    localStorage.removeItem('assessmentCompleted');
+    localStorage.removeItem('assessmentScores');
+    localStorage.removeItem('assessmentAnswers');
+    sessionStorage.removeItem('assessmentAnswers');
+    navigate('/personality-test');
   };
 
   const isValid = projectIndustry && projectStage && customerType && ambitionLevel && cofounderPurpose;
@@ -46,11 +51,11 @@ export function EntrepreneurProject() {
       {/* Progress bar */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
-          {[1, 2, 3, 4, 5, 6].map((step) => (
+          {[1, 2, 3, 4, 5].map((step) => (
             <div
               key={step}
               className="h-1.5 flex-1 rounded-full"
-              style={{ backgroundColor: step <= 6 ? colors.primary : 'rgba(61,35,20,0.15)' }}
+              style={{ backgroundColor: step <= 5 ? colors.primary : 'rgba(61,35,20,0.15)' }}
             />
           ))}
         </div>
@@ -58,7 +63,7 @@ export function EntrepreneurProject() {
           <button onClick={() => navigate(-1)} className="text-[#6B5B52]">
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <p className="text-[12px] text-[#6B5B52]">Step 6 of 6</p>
+          <p className="text-[12px] text-[#6B5B52]">Step 5 of 5</p>
         </div>
       </div>
 

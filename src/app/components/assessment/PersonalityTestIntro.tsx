@@ -5,7 +5,8 @@ import { useTheme } from '../../context/ThemeContext';
 
 export function PersonalityTestIntro() {
   const navigate = useNavigate();
-  const { colors } = useTheme();
+  const { role, colors } = useTheme();
+  const isEntrepreneur = role === 'entrepreneur';
 
   // Guard: redirect if assessment already completed
   useEffect(() => {
@@ -18,12 +19,24 @@ export function PersonalityTestIntro() {
     <div className="min-h-screen flex flex-col px-8 py-12 max-w-[375px] mx-auto">
       {/* Progress bar */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-2">
-          {[1, 2, 3, 4].map((step) => (
-            <div key={step} className="h-1.5 flex-1 rounded-full" style={{ backgroundColor: colors.primary }} />
-          ))}
-        </div>
-        <p className="text-[12px] text-[#6B5B52]">Step 4 of 4</p>
+        {!isEntrepreneur ? (
+          <>
+            <div className="flex items-center gap-2 mb-2">
+              {[1, 2, 3, 4].map((step) => (
+                <div key={step} className="h-1.5 flex-1 rounded-full" style={{ backgroundColor: colors.primary }} />
+              ))}
+            </div>
+            <p className="text-[12px] text-[#6B5B52]">Step 4 of 4</p>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center gap-2 mb-2">
+              <div className="h-1.5 flex-1 rounded-full" style={{ backgroundColor: colors.primary }} />
+              <div className="h-1.5 flex-1 bg-[rgba(61,35,20,0.15)] rounded-full" />
+            </div>
+            <p className="text-[12px] text-[#6B5B52]">Final step — Personality Assessment</p>
+          </>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col">
