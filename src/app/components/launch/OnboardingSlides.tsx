@@ -78,7 +78,6 @@ export function OnboardingSlides({ onComplete }: OnboardingSlidesProps) {
   const isDragging = useRef(false);
 
   const finish = useCallback(() => {
-    localStorage.setItem('coco_onboarding_seen', 'true');
     onComplete();
   }, [onComplete]);
 

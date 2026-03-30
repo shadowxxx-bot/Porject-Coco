@@ -9,13 +9,6 @@ export function TestQuestions() {
   const { questionId } = useParams();
   const { colors } = useTheme();
 
-  // Guard: redirect if assessment already completed
-  useEffect(() => {
-    if (localStorage.getItem('assessmentCompleted') === 'true') {
-      navigate('/discover', { replace: true });
-    }
-  }, []);
-
   const currentIndex = parseInt(questionId || '1') - 1;
   const totalQuestions = allQuestions.length;
   const currentQuestion = allQuestions[currentIndex];

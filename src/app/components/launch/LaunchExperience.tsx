@@ -6,8 +6,7 @@ import { Splash } from './Splash';
 type Phase = 'splash' | 'onboarding' | 'app';
 
 export function LaunchExperience() {
-  const alreadySeen = localStorage.getItem('coco_onboarding_seen') === 'true';
-  const [phase, setPhase] = useState<Phase>(alreadySeen ? 'app' : 'splash');
+  const [phase, setPhase] = useState<Phase>('splash');
 
   const handleSplashComplete = useCallback(() => {
     setPhase('onboarding');

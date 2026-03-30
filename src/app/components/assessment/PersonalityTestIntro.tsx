@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { bigFiveTest, workingStyleTest } from '../../data/assessmentQuestions';
 import { useTheme } from '../../context/ThemeContext';
@@ -7,13 +6,6 @@ export function PersonalityTestIntro() {
   const navigate = useNavigate();
   const { role, colors } = useTheme();
   const isEntrepreneur = role === 'entrepreneur';
-
-  // Guard: redirect if assessment already completed
-  useEffect(() => {
-    if (localStorage.getItem('assessmentCompleted') === 'true') {
-      navigate('/discover', { replace: true });
-    }
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col px-8 py-12 max-w-[375px] mx-auto">

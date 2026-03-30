@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 
 // Launch flow
 import { LaunchExperience } from "./components/launch/LaunchExperience";
@@ -46,7 +46,7 @@ import { EntrepreneurWorkingStyle } from "./components/entrepreneur/Entrepreneur
 import { EntrepreneurPreferences } from "./components/entrepreneur/EntrepreneurPreferences";
 import { EntrepreneurProject } from "./components/entrepreneur/EntrepreneurProject";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   { path: "/", Component: LaunchExperience },
   { path: "/choose-role", Component: RoleSelection },
   { path: "/signup", Component: SignUp },
