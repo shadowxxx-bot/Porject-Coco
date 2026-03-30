@@ -112,26 +112,9 @@ export function AnimatedSplash({ onComplete }: AnimatedSplashProps) {
       `}</style>
 
       <div className="flex flex-col items-center">
-        {/* Interlocked C logo */}
+        {/* Logo */}
         <div className="splash-logo mb-6">
-          <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Left C */}
-            <path
-              d="M38 8C22.536 8 10 20.536 10 36C10 51.464 22.536 64 38 64C45.2 64 51.7 61.2 56.5 56.6"
-              stroke="white"
-              strokeWidth="7"
-              strokeLinecap="round"
-              fill="none"
-            />
-            {/* Right C (mirrored, interlocked) */}
-            <path
-              d="M62 16C77.464 16 90 28.536 90 44C90 59.464 77.464 72 62 72C54.8 72 48.3 69.2 43.5 64.6"
-              stroke="white"
-              strokeWidth="7"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
+          <img src="/Porject-Coco/coco-logo.png" alt="Coco Match" className="w-24 h-24 object-contain" />
         </div>
 
         {/* COCO MATCH text */}
